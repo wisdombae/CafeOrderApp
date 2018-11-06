@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/itemOrder"
+    android:title="주문현황">
+    </item>
+
+    <item android:id="@+id/itemMenu"
+        android:title="메뉴관리">
+    </item>
+
+    <item android:id="@+id/itemTable"
+    android:title="테이블관리">
+    </item>
+
+</menu>
