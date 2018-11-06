@@ -49,9 +49,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(intent, 1000);
                 return true;
             case R.id.itemMenu:
+                Intent intent1 = new Intent(this, EditMenuActivity.class);
+                startActivityForResult(intent1, 1000);
 
                 return true;
             case R.id.itemTable:
+                Intent intent2 = new Intent(this, EditTableActivity.class);
+                startActivityForResult(intent2, 1000);
 
                 return true;
 
