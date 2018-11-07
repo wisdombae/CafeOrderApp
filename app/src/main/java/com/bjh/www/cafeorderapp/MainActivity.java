@@ -1,5 +1,6 @@
 package com.bjh.www.cafeorderapp;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,10 +15,17 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    MyDBOpenHelper dbHelper;
+    SQLiteDatabase mdb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dbHelper = new MyDBOpenHelper(this, "order.db", null, 1);
+        mdb = dbHelper.getWritableDatabase();
+
         Button buttonOrder = findViewById(R.id.buttonOrder);
         buttonOrder.setOnClickListener(this);
         TextView textViewDate = findViewById(R.id.textViewDate);
