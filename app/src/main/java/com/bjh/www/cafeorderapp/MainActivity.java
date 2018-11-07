@@ -13,7 +13,7 @@ import android.content.Intent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{//adsfsdfadsfadfadfadfsdf
 
     MyDBOpenHelper dbHelper;
     SQLiteDatabase mdb;
