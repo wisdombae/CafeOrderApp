@@ -96,22 +96,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/TvOrderList"
+            android:id="@+id/textViewOrderList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10. T1 5000원 12:12 "
-            android:textSize="24sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="11. T2 5000원 12:19"
-            android:textSize="24sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12. 000원 12:50"
             android:textSize="24sp" />
 
 

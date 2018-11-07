@@ -31,6 +31,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView textViewDate = findViewById(R.id.textViewDate);
         TextView textViewCount = findViewById(R.id.textViewCount);
 
+        Button btnCal1, btnCal2, btnCal3, btnCal4,
+                btnCancel1, btnCancel2, btnCancel3, btnCancel4;
+
+        btnCal1 = findViewById(R.id.btnCal1);
+        btnCal1.setOnClickListener(this);
+        btnCal2 = findViewById(R.id.btnCal2);
+        btnCal2.setOnClickListener(this);
+        btnCal3 = findViewById(R.id.btnCal3);
+        btnCal3.setOnClickListener(this);
+        btnCal4 = findViewById(R.id.btnCal4);
+        btnCal4.setOnClickListener(this);
+
+
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         String date = format.format(new Date());
 
@@ -40,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    
+
 
     //option menu
     @Override
@@ -77,10 +90,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        TextView textViewOrderNum1 = (TextView)findViewById(R.id.textViewOrderNum1);
+        String orderNum1 = textViewOrderNum1.getText().toString();
+
+        TextView textViewOrderList1 =(TextView)findViewById(R.id.textViewOrderList1);
+        String orderList1 = textViewOrderList1.getText().toString();
+
+        TextView textViewOrderSum1 = (TextView)findViewById(R.id.textViewOrderSum1);
+        int orderSum1 = 10000;
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String datetime = format.format(new Date());
+
+        switch (v.getId()){
+            case R.id.buttonOrder:
+                Intent intent = new Intent(this, OrderActivity.class);
+                startActivityForResult(intent, 100);
+                break;
+            case R.id.btnCal1:
+                mdb.execSQL("INSERT INTO menu Values( '"+orderNum1+"', '" + orderList1 +"','"+orderSum1+"');");
+                break;
 
 
-        Intent intent = new Intent(this, OrderActivity.class);
-        startActivityForResult(intent, 100);
+        }
+
+
 
 
 
