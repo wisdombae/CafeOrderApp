@@ -32,15 +32,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView textViewCount = findViewById(R.id.textViewCount);
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String datetime = format.format(new Date());
+        String date = format.format(new Date());
 
-        textViewDate.setText(datetime);
+        textViewDate.setText(date);
         textViewCount.setText("오늘 주문건수: ");
 
 
-
-
     }
+
+    
+
+    //option menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
+    //option menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
