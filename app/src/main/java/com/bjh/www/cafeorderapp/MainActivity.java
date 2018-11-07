@@ -100,19 +100,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+
         TextView textViewOrderNum1 = (TextView)findViewById(R.id.textViewOrderNum1);
-        String orderNum1 = textViewOrderNum1.getText().toString();
+        String ordered_list_seq= textViewOrderNum1.getText().toString();
+
+        int ordered_count=1;
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd-HH:mm:ss");
+        String ordered_date = format.format(new Date());
+
+        String tableseat_seq="aa";
 
         TextView textViewTableNum1 =(TextView)findViewById(R.id.textViewTableNum1);
+        String tableseat_name = textViewTableNum1.getText().toString();
+
+        String menu_seq="bb";
 
         TextView textViewOrderList1 =(TextView)findViewById(R.id.textViewOrderList1);
-        String orderList1 = textViewOrderList1.getText().toString();
+        String  menu_name = textViewOrderList1.getText().toString();
 
         TextView textViewOrderSum1 = (TextView) findViewById(R.id.textViewOrderSum1);
-        int orderSum1 = 12000;
+        int cost = Integer.parseInt(textViewOrderSum1.getText().toString());
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-        String datetime = format.format(new Date());
+
 
         switch (v.getId()){
             case R.id.buttonOrder:
@@ -120,15 +130,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(intent, 100);
                 break;
             case R.id.btnCal1:
-                mdb.execSQL("INSERT INTO menu Values('"+orderNum1+"','"+orderList1+"','"+orderSum1+"');");
-                break;
-
+                mdb.execSQL("INSERT INTO ordered_list Values('"+ordered_list_seq+"','"+ordered_count+"','"+ordered_date+"'"+",'"+tableseat_seq+"','"+tableseat_name+"','"+menu_seq+"','"+menu_name+"','"+cost+"');");
+                textViewOrderNum1.setText("NO.");
+                textViewOrderList1.setText("");
+                
             case R.id.btnCancel1:
                 textViewOrderNum1.setText("NO.");
                 textViewOrderList1.setText("");
-                textViewOrderSum1.setText("합계: ");
+                textViewOrderSum1.setText("");
 
-                break;
+
 
 
         }

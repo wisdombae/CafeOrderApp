@@ -39,14 +39,19 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
 
 
         TextView textViewOrderList = findViewById(R.id.textViewOrderList);
-        String query = "SELECT * FROM menu";
+        String query = "SELECT * FROM ordered_list";
         Cursor cursor = mdb.rawQuery(query,null);
         String str ="";
         while (cursor.moveToNext()){
             String pkid = cursor.getString(0);
-            String name = cursor.getString(cursor.getColumnIndex("menu_name"));
-            Integer cost = cursor.getInt(cursor.getColumnIndex("cost"));
-            str+=(pkid+":"+name+"-"+Integer.toString(cost)+"\n");
+            int ordered_count = cursor.getInt(cursor.getColumnIndex("ordered_count"));
+            String ordered_date = cursor.getString(cursor.getColumnIndex("ordered_date"));
+            String tableseat_seq = cursor.getString(cursor.getColumnIndex("tableseat_seq"));
+            String tableseat_name = cursor.getString(cursor.getColumnIndex("tableseat_name"));
+            String menu_seq = cursor.getString(cursor.getColumnIndex("menu_seq"));
+            String menu_name = cursor.getString(cursor.getColumnIndex("menu_name"));
+            int cost = cursor.getInt(cursor.getColumnIndex("cost"));
+            str+=(pkid+" "+ordered_count+" "+ordered_date+" "+tableseat_seq+" "+tableseat_name+" "+menu_seq+" "+menu_name+" "+Integer.toString(cost)+"\n");
         }
         textViewOrderList.setText(str);
     }
