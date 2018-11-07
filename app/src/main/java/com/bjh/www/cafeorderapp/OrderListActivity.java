@@ -22,9 +22,9 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
         TextView textViewOrderListDate = findViewById(R.id.textViewOrderListDate);
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String datetime = format.format(new Date());
+        String date= format.format(new Date());
 
-        textViewOrderListDate.setText(datetime);
+        textViewOrderListDate.setText(date);
     }
 
     @Override
