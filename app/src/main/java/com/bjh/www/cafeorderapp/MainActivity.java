@@ -13,7 +13,7 @@ import android.content.Intent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{//adsfsdfadsfadfadfadfsdf
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     MyDBOpenHelper dbHelper;
     SQLiteDatabase mdb;
@@ -42,6 +42,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnCal3.setOnClickListener(this);
         btnCal4 = findViewById(R.id.btnCal4);
         btnCal4.setOnClickListener(this);
+
+        btnCancel1 = findViewById(R.id.btnCancel1);
+        btnCancel1.setOnClickListener(this);
+        btnCancel2 = findViewById(R.id.btnCancel2);
+        btnCancel2.setOnClickListener(this);
+        btnCancel3 = findViewById(R.id.btnCancel3);
+        btnCancel3.setOnClickListener(this);
+        btnCancel4 = findViewById(R.id.btnCancel4);
+        btnCancel4.setOnClickListener(this);
+
 
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
@@ -93,11 +103,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView textViewOrderNum1 = (TextView)findViewById(R.id.textViewOrderNum1);
         String orderNum1 = textViewOrderNum1.getText().toString();
 
+        TextView textViewTableNum1 =(TextView)findViewById(R.id.textViewTableNum1);
+
         TextView textViewOrderList1 =(TextView)findViewById(R.id.textViewOrderList1);
         String orderList1 = textViewOrderList1.getText().toString();
 
-        TextView textViewOrderSum1 = (TextView)findViewById(R.id.textViewOrderSum1);
-        int orderSum1 = 10000;
+        TextView textViewOrderSum1 = (TextView) findViewById(R.id.textViewOrderSum1);
+        int orderSum1 = 12000;
 
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssSSS");
         String datetime = format.format(new Date());
@@ -108,7 +120,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(intent, 100);
                 break;
             case R.id.btnCal1:
-                mdb.execSQL("INSERT INTO menu Values( '"+orderNum1+"', '" + orderList1 +"','"+orderSum1+"');");
+                mdb.execSQL("INSERT INTO menu Values('"+orderNum1+"','"+orderList1+"','"+orderSum1+"');");
+                break;
+
+            case R.id.btnCancel1:
+                textViewOrderNum1.setText("NO.");
+                textViewOrderList1.setText("");
+                textViewOrderSum1.setText("합계: ");
+
                 break;
 
 

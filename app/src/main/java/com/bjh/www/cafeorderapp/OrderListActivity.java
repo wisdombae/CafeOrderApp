@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class OrderListActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    MyDBOpenHelper dbHelper;
     SQLiteDatabase mdb;
 
     @Override
@@ -27,15 +27,28 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
         Button btnOrderListDate = findViewById(R.id.btnOrderListDate);
         btnOrderListDate.setOnClickListener(this);
 
+        dbHelper = new MyDBOpenHelper(this, "order.db", null, 1);
+        mdb = dbHelper.getWritableDatabase();
+
 
 
         TextView textViewOrderListDate = findViewById(R.id.textViewOrderListDate);
-
-
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         String date= format.format(new Date());
-
         textViewOrderListDate.setText(date);
+
+
+        TextView textViewOrderList = findViewById(R.id.textViewOrderList);
+        String query = "SELECT * FROM menu";
+        Cursor cursor = mdb.rawQuery(query,null);
+        String str ="";
+        while (cursor.moveToNext()){
+            String pkid = cursor.getString(0);
+            String name = cursor.getString(cursor.getColumnIndex("menu_name"));
+            Integer cost = cursor.getInt(cursor.getColumnIndex("cost"));
+            str+=(pkid+":"+name+"-"+Integer.toString(cost)+"\n");
+        }
+        textViewOrderList.setText(str);
     }
 
     @Override
@@ -44,22 +57,13 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
             case R.id.btnOrderListBack:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivityForResult(intent, 1000);
+                fileList();
                 break;
 
-//            case R.id.btnOrderListDate:
-//                TextView textViewOrderList = findViewById(R.id.textViewOrderList);
-//                String query = "SELECT * FROM menu";
-//
-//                Cursor cursor = mdb.rawQuery(query,null);
-//                String str ="";
-//                while (cursor.moveToNext()){
-//                    String pkid = "x";
-//                    String name = cursor.getString(cursor.getColumnIndex("menu_name"));
-//                    int cost = cursor.getInt(cursor.getColumnIndex("cost"));
-//                    str+=(pkid+":"+name+"-"+Integer.toString(cost)+"\n");
-//                }
-//                textViewOrderList.setText(str);
-                
+            case R.id.btnOrderListDate:
+                break;
+
+
 
         }
 

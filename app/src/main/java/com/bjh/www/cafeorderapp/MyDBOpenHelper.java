@@ -21,7 +21,7 @@ public class MyDBOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE tableseat (tableseat_seq text PRIMARY KEY, tableseat_name TEXT);");
-        db.execSQL("CREATE TABLE menu (menu_seq text PRIMARY KEY, menu_name TEXT, cost integer);");
+        db.execSQL("CREATE TABLE menu (menu_seq text PRIMARY KEY, menu_name TEXT, cost Integer);");
         db.execSQL("CREATE TABLE ordered_list (ordered_list_seq text PRIMARY KEY, " +
                 "ordered_count integer, ordered_date text, tableseat_seq text, " +
                 "tableseat_name text, menu_seq text, menu_name text, cost integer);");
